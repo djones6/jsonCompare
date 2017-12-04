@@ -1,0 +1,24 @@
+1) Build OpenSSL 1.0.2
+
+wget https://www.openssl.org/source/openssl-1.0.2m.tar.gz
+tar -xzf openssl-1.0.2m.tar.gz
+cd openssl-1.0.2m
+./config shared
+vi Makefile   (change the SHLIB_MINOR to 0.2 rather than 0.0, so the shared libs are built with a name that doesn't conflict with the system-provided version)
+make depend && make
+ln -s libssl.so ./libfoossl.so
+ln -s libcrypto.so ./libfoocrypto.so
+cd ..
+
+2) Modify Perfect's COpenSSL to link against the modified version
+swift package edit COpenSSL
+vi Packages/COpenSSL/COpenSSL/include/module.modulemap    (change 'ssl' and 'crypto' to 'foossl' and 'foocrypto')
+
+3) Build against the library
+swift build -c release -Xswiftc -I$PWD/openssl-1.0.2m/include -Xlinker -L$PWD/openssl-1.0.2m
+(use build_1404.sh)
+(for some reason the binary links to libssl.so.1.0.2 rather than libfoossl.so, but it still works)
+
+4) Run
+before running, export LD_LIBRARY_PATH=$PWD/openssl-1.0.2m
+(use run_1404.sh)
