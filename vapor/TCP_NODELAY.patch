@@ -1,12 +1,12 @@
 diff --git a/Sources/Sockets/Socket/Descriptor.swift b/Sources/Sockets/Socket/Descriptor.swift
-index 118bc5f..5597f61 100644
+index 118bc5f..397c859 100644
 --- a/Sources/Sockets/Socket/Descriptor.swift
 +++ b/Sources/Sockets/Socket/Descriptor.swift
 @@ -16,6 +16,7 @@ public struct Descriptor {
          if config.reuseAddress {
              try setOption(level: SOL_SOCKET, name: SO_REUSEADDR, value: 1)
          }
-+        try setOption(level: SOL_SOCKET, name: TCP_NODELAY, value: 1)
++        try setOption(level: Int32(IPPROTO_TCP), name: TCP_NODELAY, value: 1)
  
          try disableSIGPIPE()
      }
