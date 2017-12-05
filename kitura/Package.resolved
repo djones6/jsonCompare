@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "LinuxBridge",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect-LinuxBridge.git",
+        "state": {
+          "branch": null,
+          "revision": "ba9d1fb5be8eb238521206b39bec90a760bb0192",
+          "version": "3.0.0"
+        }
+      },
+      {
         "package": "LoggerAPI",
         "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
         "state": {
@@ -116,6 +125,15 @@
           "branch": null,
           "revision": "95c405c18a071a1c13616e984ba1b3c6091ca6ca",
           "version": "0.3.7"
+        }
+      },
+      {
+        "package": "PerfectLib",
+        "repositoryURL": "https://github.com/PerfectlySoft/Perfect.git",
+        "state": {
+          "branch": null,
+          "revision": "fc5186e209f0621fe50390ec1fb02bd9d3ef0e57",
+          "version": "3.0.2"
         }
       },
       {
